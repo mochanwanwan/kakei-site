@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>免責事項｜綴</title>
+<meta name="description" content="名字と、明治ごろの本籍地の村が分かれば、ご先祖が暮らした村を古い記録からたどれます。綴・一葉 500円／綴・見立帖 30,000円／綴・伝承帖 98,000円。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── 色 ── */
+:root{
+  --paper:#FBF8F1; --ink:#23201B; --mute:#5D574C; --line:#DCD3C2;
+  --accent:#7A4E2D; --red:#A8433C; --soft:#F1EADB; --card:#FFFFFF; --on-accent:#FFFFFF;
+  --shadow:0 1px 2px rgba(35,32,27,.06), 0 6px 18px rgba(35,32,27,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#1B1916; --ink:#EDE7DA; --mute:#B3AA9A; --line:#3A352D;
+    --accent:#C9946A; --red:#D98A83; --soft:#242019; --card:#221F1A; --on-accent:#1B1916;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1B1916; --ink:#EDE7DA; --mute:#B3AA9A; --line:#3A352D;
+  --accent:#C9946A; --red:#D98A83; --soft:#242019; --card:#221F1A; --on-accent:#1B1916;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+}
+
+/* ── 字 ──
+   見出し・品名・額＝Zen Old Mincho（格）／本文・箇条・注＝Noto Sans JP 300（細いゴシック。2026-09-24 依頼者が C を選んだ）。
+   読む相手は 60〜70 代。本文 18px・注も 15px を下限にし、行間は 1.9。 */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans",sans-serif;
+  font-size:18px; font-weight:300; line-height:1.9; font-feature-settings:"palt" 0; font-kerning:normal;
+  overflow-x:hidden;
+}
+.m, h1, h2, h3, .name, .fee b, .step h3{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif}
+img{max-width:100%; display:block; height:auto}
+a{color:var(--accent)}
+.wrap{max-width:46rem; margin:0 auto; padding:0 16px}
+.wide{max-width:62rem}
+p{margin:0 0 1rem}
+figure{margin:0}
+.num{font-variant-numeric:tabular-nums lining-nums; letter-spacing:.02em}
+
+/* 見出しの三段：h1（看板）／h2（節）／h3（小節） */
+h1{font-size:2rem; line-height:1.5; margin:1.8rem 0 .8rem; font-weight:700; letter-spacing:.02em}
+h1 .kicker{text-wrap:pretty; display:block; font-family:"Noto Sans JP",sans-serif; font-size:1rem; font-weight:500; color:var(--mute); line-height:1.8; margin-bottom:.8rem; letter-spacing:.03em}
+h2{font-size:1.6rem; line-height:1.5; margin:3.4rem 0 1rem; padding:0 0 .5rem; border-bottom:1px solid var(--line); font-weight:700; letter-spacing:.02em}
+h2 .kicker{display:block; font-family:"Noto Sans JP",sans-serif; font-size:.94rem; font-weight:500; color:var(--accent); letter-spacing:.12em; margin-bottom:.35rem}
+h3{font-size:1.25rem; line-height:1.55; margin:2.2rem 0 .8rem; font-weight:700; letter-spacing:.02em}
+h3.chu{padding-left:.7rem; border-left:4px solid var(--accent)}
+.yomi{font-family:"Noto Sans JP",sans-serif; font-size:.9rem; font-weight:400; color:var(--mute); margin-left:.7rem; letter-spacing:.1em; white-space:nowrap}
+.lede{font-size:1.1rem; line-height:2}
+.note{font-size:.9rem; color:var(--mute); line-height:1.85}
+figcaption{font-size:.9rem; color:var(--mute); line-height:1.75; margin-top:.55rem}
+figcaption b{color:var(--ink); font-weight:700; display:block}
+
+/* ── 看板 ── */
+header.top{border-bottom:1px solid var(--line); background:var(--card); position:sticky; top:0; z-index:5}
+header.top .wrap{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; padding-top:.7rem; padding-bottom:.7rem}
+.brand{display:flex; align-items:baseline; gap:.6rem; font-weight:700; white-space:nowrap}
+.brand .mark{font-size:1.6rem; letter-spacing:.14em}
+.brand .sub{font-size:.9rem; font-weight:500; color:var(--mute); letter-spacing:.1em}
+header.top .tel{font-size:.95rem; color:var(--mute); white-space:nowrap}
+header.top .tel a{color:var(--ink); text-decoration:none; font-weight:700}
+
+.hero img{width:100%; border:1px solid var(--line)}
+
+/* ── 三つの綴り（道の全体） ── */
+.michi{display:grid; grid-template-columns:1fr 1.25fr 1fr; gap:.9rem; align-items:stretch; margin:1.4rem 0 .6rem}
+.step{display:block; text-decoration:none; color:inherit; background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1rem; position:relative}
+.step.main{border:2px solid var(--accent); box-shadow:var(--shadow)}
+.step .tag{position:absolute; top:-.75rem; left:.9rem; background:var(--soft); border:1px solid var(--line); color:var(--mute); font-size:.78rem; letter-spacing:.12em; padding:.05rem .6rem; border-radius:3px}
+.step.main .tag{background:var(--accent); color:var(--on-accent); border-color:var(--accent)}
+.step .th{aspect-ratio:1/1.1; background:var(--soft); border:1px solid var(--line); display:flex; align-items:flex-start; justify-content:center; overflow:hidden; margin:.4rem 0 .8rem}
+.step .th img{width:100%; height:100%; object-fit:contain; object-position:top center; background:#fff}
+.step h3{margin:0 0 .1rem; font-size:1.2rem}
+.step.main h3{font-size:1.4rem}
+.step .price{font-family:"Zen Old Mincho",serif; font-weight:700; font-size:1.35rem; margin:.1rem 0 .3rem}
+.step.main .price{font-size:1.7rem}
+.step .price small{font-family:"Noto Sans JP",sans-serif; font-weight:400; font-size:.8rem; color:var(--mute); margin-left:.3rem}
+.step p{font-size:.92rem; color:var(--mute); line-height:1.75; margin:0}
+.step .go{display:block; margin-top:.5rem; font-size:.9rem; color:var(--accent); font-weight:700}
+
+/* ── 品の札 ── */
+.card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1.2rem 1.2rem 1.3rem; margin:1.2rem 0}
+.card.main{border:2px solid var(--accent); box-shadow:var(--shadow); padding:1.5rem 1.5rem 1.6rem}
+.card .head{display:flex; flex-wrap:wrap; align-items:baseline; gap:.2rem .5rem; margin-bottom:.3rem}
+.card .name{font-size:1.55rem; font-weight:700; margin:0}
+.card.main .name{font-size:1.9rem}
+.card .for{font-size:1rem; color:var(--accent); margin:0 0 .8rem; font-weight:500}
+.card ul{margin:.4rem 0 1rem; padding-left:1.3rem}
+.card li{margin-bottom:.5rem}
+.card li b{font-weight:700}
+.two{display:grid; grid-template-columns:11rem 1fr; gap:1.4rem; align-items:start}
+.two.big{grid-template-columns:15rem 1fr}
+.two .th{background:var(--soft); border:1px solid var(--line); overflow:hidden}
+.two .th img{width:100%; background:#fff}
+.fee{border-top:1px solid var(--line); padding-top:.9rem; margin-top:.4rem; display:flex; flex-wrap:wrap; align-items:baseline; gap:.3rem 1rem}
+.fee b{font-size:2rem; font-weight:700; letter-spacing:.02em; line-height:1.3}
+.card.main .fee b{font-size:2.4rem}
+.fee span{font-size:.92rem; color:var(--mute); line-height:1.75; flex:1 1 14rem}
+
+/* 冊子の見開き（頁を切らずに三枚並べる） */
+.pages{display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1.2rem 0 .3rem}
+.pages img{width:100%; aspect-ratio:909/1287; object-fit:contain; object-position:top center; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow)}
+.pages figcaption{text-align:center}
+
+/* 一冊の中身（章の並び） */
+ol.mokuji{counter-reset:m; list-style:none; margin:0 0 .8rem; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:0 2rem}
+ol.mokuji li{counter-increment:m; position:relative; padding:.6rem 0 .6rem 2.6rem; border-bottom:1px solid var(--line); font-size:.95rem; line-height:1.75; color:var(--mute)}
+ol.mokuji li b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.12rem; color:var(--ink); line-height:1.6; margin-bottom:.1rem}
+ol.mokuji li::before{content:counter(m); position:absolute; left:0; top:.85rem; width:1.7rem; height:1.7rem; border:1px solid var(--accent); border-radius:50%; color:var(--accent); font-size:.85rem; font-weight:700; display:flex; align-items:center; justify-content:center}
+
+/* 調べる記録・お約束（四つ／三つの柱） */
+.cols{display:grid; grid-template-columns:repeat(2,1fr); gap:1rem 1.4rem}
+.cols.four{grid-template-columns:repeat(4,1fr)}
+.cols.three{grid-template-columns:repeat(3,1fr)}
+.cols > div{border-top:2px solid var(--accent); padding-top:.7rem; font-size:.95rem; line-height:1.8; color:var(--mute)}
+.cols > div b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.15rem; color:var(--ink); margin-bottom:.25rem; line-height:1.5}
+
+/* 図の見本：切らずに、幅いっぱいに */
+.zu{display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem 1.4rem; margin:1rem 0; align-items:start}
+.zu figure{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.8rem .8rem 1rem}
+.zu img{width:100%; background:#fff}
+.zu figure.span{grid-column:1/-1}
+/* 見立帖の図：四枚を同じ大きさの箱に揃える（図5 は幅いっぱいなのでそのまま） */
+.zu.zuhyo img{aspect-ratio:782/500; object-fit:contain; object-position:center}
+.zu.zuhyo figure.span img{aspect-ratio:auto}
+/* 伝承帖の見本：絵は幅いっぱいの帯、頁の見本は同じ大きさの三枚に揃える */
+.zu.mihon{grid-template-columns:repeat(3,1fr)}
+.zu.mihon img{aspect-ratio:782/1043; object-fit:contain; object-position:top center}
+.zu.mihon figure.span img{aspect-ratio:1600/872; object-fit:cover; object-position:center}
+.zu figcaption b span{font-family:"Noto Sans JP",sans-serif; font-weight:500; color:var(--red); font-size:.85rem; margin-right:.5rem; letter-spacing:.06em}
+.page-one{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.8rem .8rem 1rem; margin:1rem 0}
+.page-one img{width:100%; background:#fff}
+
+/* 確度の印 */
+.wakaru{display:grid; grid-template-columns:1.25fr 1fr; gap:1.6rem 2.2rem; align-items:start}
+.jirei{border-left:3px solid var(--accent); background:var(--card); padding:1rem 1.2rem; border-radius:0 6px 6px 0}
+.jirei b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.1rem; margin-bottom:.4rem}
+.jirei p{margin:.4rem 0 0; font-size:.96rem; line-height:1.9; color:var(--mute)}
+.toi{margin:0}
+.toi > div{border-top:2px solid var(--accent); padding-top:.7rem; margin-bottom:1.1rem; font-size:.95rem; line-height:1.8; color:var(--mute)}
+.toi > div b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.15rem; color:var(--ink); margin-bottom:.25rem; line-height:1.55}
+.kaku{display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; font-size:.95rem; margin:1rem 0 0}
+.kaku span b{font-family:"Zen Old Mincho",serif; font-size:1.2rem; margin-right:.35rem}
+
+/* 始め方 */
+ol.nagare{counter-reset:n; list-style:none; margin:0; padding:0}
+ol.nagare li{counter-increment:n; position:relative; padding:.3rem 0 1rem 3rem; line-height:1.85}
+ol.nagare li::before{content:counter(n); position:absolute; left:0; top:.45rem; width:2rem; height:2rem; border-radius:50%;
+  background:var(--accent); color:var(--on-accent); font-size:1rem; font-weight:700; display:flex; align-items:center; justify-content:center}
+ol.nagare li b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.15rem}
+
+/* 申し込み */
+.mousikomi{background:var(--card); border:2px solid var(--accent); border-radius:6px; padding:1.4rem 1.3rem; margin:1.4rem 0; box-shadow:var(--shadow)}
+.mousikomi h3{margin:0 0 .5rem}
+.btn{display:block; text-align:center; background:var(--accent); color:var(--on-accent); text-decoration:none;
+  font-weight:700; font-size:1.15rem; padding:1.05rem 1.2rem; border-radius:6px; margin:.9rem 0 .5rem; line-height:1.5}
+.btn:hover{filter:brightness(1.08)}
+.btn.sub{background:var(--card); color:var(--accent); border:2px solid var(--accent)}
+.btn.inline{display:inline-block; margin:.6rem 0 0; padding:.8rem 1.6rem; font-size:1.05rem}
+.renraku{font-size:1.05rem; line-height:2.1; margin-top:.8rem}
+.renraku a{color:var(--accent); font-weight:700}
+
+/* お選びいただけるもの */
+.opt{background:var(--soft); border:1px solid var(--line); border-radius:6px; padding:1.1rem 1.2rem; margin:1rem 0}
+.opt .name{font-size:1.25rem}
+.opt .tag{font-size:.8rem; color:var(--mute); border:1px solid var(--line); background:var(--card); border-radius:3px; padding:.1rem .55rem; margin-left:.6rem; vertical-align:.15rem; white-space:nowrap}
+.opt p{font-size:.95rem; color:var(--mute); margin:.5rem 0 .6rem}
+.opt .fee{border-top:none; padding-top:0; margin-top:0}
+.opt .fee b{font-size:1.45rem}
+.fee-table{width:100%; border-collapse:collapse; margin:.8rem 0 0; font-size:.95rem}
+.fee-table th{width:auto; white-space:nowrap; background:transparent; border:none; border-top:1px solid var(--line); padding:.55rem .8rem .55rem 0; font-weight:400; color:var(--mute)}
+.fee-table td{border:none; border-top:1px solid var(--line); padding:.55rem 0; text-align:right; white-space:normal}
+.fee-table td.txt{text-align:left; padding-left:1.2rem; color:var(--ink)}
+.fee-table tr:first-child th,.fee-table tr:first-child td{border-top:none}
+
+/* お尋ね */
+details{border:1px solid var(--line); border-radius:6px; background:var(--card); padding:.4rem 1.1rem; margin:.8rem 0}
+summary{cursor:pointer; font-weight:700; padding:.7rem 0; font-size:1.05rem}
+details p{margin:.2rem 0 .9rem; color:var(--mute)}
+
+/* 特商法 */
+table{width:100%; border-collapse:collapse; font-size:.95rem; line-height:1.8; margin:1rem 0}
+th,td{border:1px solid var(--line); padding:.65rem .8rem; text-align:left; vertical-align:top}
+th{width:10.5rem; background:var(--soft); font-weight:500; white-space:nowrap}
+
+footer{border-top:1px solid var(--line); margin-top:3.5rem; padding:1.6rem 0 3rem; background:var(--card)}
+
+/* ── 品の仕切り ──
+   一葉・見立帖・伝承帖の三節を、幅いっぱいの帯で一つずつ包む。
+   帯の頭に太い罫、節の見出しは丸に「一・二・三」（CSS の番号。文言には足さない）。
+   かなめの見立帖だけ地を少し染め、上下を二重の罫で挟む。 */
+main{counter-reset:shina}
+.shina{counter-increment:shina; border-top:3px solid var(--accent); padding:2.2rem 0 3rem; margin-top:3.2rem; scroll-margin-top:3.6rem}
+.shina.kaname{background:var(--soft); border-top:6px double var(--accent); border-bottom:6px double var(--accent); padding-bottom:3.4rem}
+.shina.kaname + .shina{border-top:none; margin-top:0}
+.shina > .wrap > h2{border-bottom:none; margin-top:0; padding:0 0 .6rem 4.2rem; position:relative; font-size:2rem; line-height:1.45; min-height:3.4rem}
+.shina > .wrap > h2::before{content:counter(shina,cjk-ideographic); position:absolute; left:0; top:.1rem; width:3.2rem; height:3.2rem; border-radius:50%;
+  background:var(--accent); color:var(--on-accent); font-size:1.55rem; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; letter-spacing:0}
+.shina > .wrap > h2 .kicker{color:var(--accent)}
+.shina.kaname > .wrap > h2{font-size:2.25rem}
+.shina .card,.shina .zu figure,.shina .page-one{background:var(--card)}
+/* 節の中の小見出しは品の見出しよりはっきり小さく */
+.shina h3.chu{font-size:1.08rem; margin:2.4rem 0 .7rem; padding-left:.6rem; border-left:3px solid var(--accent); font-weight:700; letter-spacing:.04em}
+
+/* ── 携帯の幅 ── */
+@media (max-width:720px){
+  body{font-size:17px}
+  .fee-table th{white-space:normal; padding-right:.6rem}
+  h1{font-size:1.6rem}
+  h1 br{display:none}
+  h2{font-size:1.4rem; margin-top:2.8rem}
+  h3{font-size:1.18rem}
+  .shina{padding:1.6rem 0 2.2rem; margin-top:2.4rem}
+  .shina > .wrap > h2{font-size:1.5rem; padding-left:3.1rem; min-height:2.6rem}
+  .shina.kaname > .wrap > h2{font-size:1.6rem}
+  .shina > .wrap > h2::before{width:2.4rem; height:2.4rem; font-size:1.2rem; top:.15rem}
+  .shina h3.chu{font-size:1.02rem}
+  header.top .tel{display:none}
+  .michi{grid-template-columns:1fr; gap:1.2rem}
+  .michi .step{display:grid; grid-template-columns:5.5rem 1fr; gap:0 .9rem; align-items:start}
+  .michi .step .tag{top:-.7rem}
+  .michi .step .th{aspect-ratio:auto; height:7.6rem; margin:.2rem 0 0; grid-row:1/6}
+  .michi .step.main .th{height:8.6rem}
+  .two,.two.big{grid-template-columns:1fr}
+  .two .th{max-width:14rem}
+  .pages{gap:.5rem}
+  .pages figcaption{font-size:.8rem}
+  ol.mokuji{grid-template-columns:1fr}
+  .cols,.cols.four,.cols.three,.zu,.zu.mihon,.wakaru{grid-template-columns:1fr}
+  .card.main{padding:1.2rem 1rem 1.3rem}
+  .card.main .name{font-size:1.6rem}
+  .card.main .fee b{font-size:2.1rem}
+  th{width:auto; white-space:normal}
+  table,thead,tbody,tr,th,td{display:block}
+  th{border-bottom:none}
+  td{border-top:none; margin-bottom:.5rem}
+}
+@media (max-width:400px){
+  .pages{grid-template-columns:1fr 1fr}
+  .pages figure:last-child{display:none}
+}
+
+/* ── B案で足した分 ── */
+.wrap,.wrap.wide{max-width:62rem}
+.wrap p,.wrap ul,.wrap ol.nagare,.toi,.jirei{max-width:44rem}
+header.top .go{background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:700;padding:.35rem .9rem;border-radius:6px;font-size:.95rem;white-space:nowrap}
+header.top .right{display:flex;align-items:center;gap:1rem}
+.konna{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.konna li{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1rem 1.1rem;font-family:"Zen Old Mincho",serif;font-size:1.1rem;line-height:1.7}
+details.shosai{margin:1.2rem 0}
+details.shosai > summary{font-size:1.1rem}
+details.shosai[open]{padding-bottom:1rem}
+header.top .go{flex:none}
+.hero{max-width:44rem}
+.fee span b,.opt .fee span b{font-size:inherit;font-family:inherit;line-height:inherit}
+@media (max-width:720px){.konna{grid-template-columns:1fr} header.top .tel{display:none}}
+.kitei-links{font-size:.8rem; color:var(--mute); text-align:center; margin:1.2rem 0}
+.kitei-links a{color:var(--mute)}
+.sub h3{font-size:1rem; margin:1.6rem 0 .4rem}
+.sub ol{line-height:1.9; padding-left:1.4rem}
+
+/* ── 家系図職人風の枠：上にタブ、左にサービスの一覧〈依頼者 2026-09-24〉 ── */
+header.top .wrap.wide{max-width:76rem}
+nav.tabs{border-top:1px solid var(--line); background:var(--card)}
+nav.tabs ul{display:flex; max-width:76rem; margin:0 auto; padding:0 16px; list-style:none; overflow-x:auto; scrollbar-width:none}
+nav.tabs ul::-webkit-scrollbar{display:none}
+nav.tabs li{flex:1 0 auto}
+nav.tabs a{display:block; text-align:center; padding:.5rem .9rem; font-size:.9rem; font-weight:500; color:var(--ink); text-decoration:none; border-right:1px solid var(--line); white-space:nowrap}
+nav.tabs li:first-child a{border-left:1px solid var(--line)}
+nav.tabs a:hover, nav.tabs a[aria-current]{background:var(--soft); color:var(--accent)}
+.frame{max-width:76rem; margin:0 auto; padding:0 16px; display:grid; grid-template-columns:15rem minmax(0,1fr); gap:2.4rem; align-items:start}
+.frame > main .wrap{padding-left:0; padding-right:0}
+.frame > main [id]{scroll-margin-top:8rem}
+aside.side{position:sticky; top:7.3rem; padding:2rem 0 1.5rem; max-height:calc(100vh - 7.3rem); overflow-y:auto; scrollbar-width:none}
+aside.side::-webkit-scrollbar{display:none}
+.side .side-h{font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif; font-weight:700; font-size:1rem; letter-spacing:.06em; padding:.45rem .8rem; background:var(--soft); border:1px solid var(--line); border-bottom:2px solid var(--accent); margin:0}
+.side ul.plans{list-style:none; margin:0 0 1.2rem; padding:0; border:1px solid var(--line); border-top:none; background:var(--card)}
+.side ul.plans li + li{border-top:1px solid var(--line)}
+.side ul.plans a{display:block; padding:.6rem .8rem; text-decoration:none; color:var(--ink); line-height:1.5}
+.side ul.plans a:hover{background:var(--soft)}
+.side ul.plans a::before{content:"›"; color:var(--accent); margin-right:.45rem; font-weight:700}
+.side ul.plans .nm{font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif; font-weight:700; font-size:1.02rem}
+.side ul.plans .pr{display:block; padding-left:1rem; font-size:.84rem; color:var(--mute)}
+.side ul.plans .opt-l{font-family:"Noto Sans JP",sans-serif; font-weight:500; font-size:.8rem; color:var(--mute); white-space:nowrap}
+.side .box{display:block; border:1px solid var(--line); background:var(--card); border-radius:6px; padding:.8rem .9rem; margin:0 0 .9rem; text-decoration:none; color:var(--ink); font-size:.88rem; line-height:1.7}
+.side .box b{display:block; font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif; font-size:1.05rem; color:var(--accent)}
+.side .box.go{background:var(--accent); color:var(--on-accent); border-color:var(--accent); text-align:center}
+.side .box.go b{color:var(--on-accent)}
+.side .small{font-size:.8rem; line-height:1.9; color:var(--mute)}
+.side .small a{color:var(--mute)}
+@media (max-width:900px){
+  .frame{display:block}
+  aside.side{position:static; max-height:none; overflow:visible; padding:1.2rem 0 0}
+  .side .box, .side .small{display:none}
+  .side ul.plans{display:grid; grid-template-columns:1fr 1fr; margin-bottom:0}
+  .side ul.plans li + li{border-top:none}
+  .side ul.plans li{border-top:1px solid var(--line)}
+  .side ul.plans li:nth-child(odd){border-right:1px solid var(--line)}
+  .side ul.plans li:first-child, .side ul.plans li:nth-child(2){border-top:none}
+  .frame > main [id]{scroll-margin-top:6rem}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap wide">
+    <div class="brand"><span class="mark m">綴</span><span class="sub">つづり｜家系調査</span></div>
+    <div class="right"><div class="tel num">お電話 <a href="tel:047-384-8828">047-384-8828</a>（平日 9:00〜17:00）</div><a class="go" href="index.html#mousikomi">申し込む</a></div>
+  </div>
+  <nav class="tabs" aria-label="頁の案内"><ul><li><a href="index.html#top">トップページ</a></li><li><a href="index.html#service">3つのサービス</a></li><li><a href="index.html#hoshin">制作の方針</a></li><li><a href="index.html#mousikomi">お申し込み</a></li><li><a href="index.html#qa">よくあるお尋ね</a></li><li><a href="about.html">綴について</a></li><li><a href="kiyaku.html">ご利用規約</a></li></ul></nav>
+</header>
+
+<div class="frame">
+<aside class="side" aria-label="サービスの一覧">
+  <p class="side-h">サービス一覧</p>
+  <ul class="plans">
+    <li><a href="index.html#ichiyo"><span class="nm">綴・一葉</span><span class="pr num">500円（税込）</span></a></li>
+    <li><a href="index.html#mitate"><span class="nm">綴・見立帖</span><span class="pr num">30,000円（税込）</span></a></li>
+    <li><a href="index.html#densho"><span class="nm">綴・伝承帖</span><span class="pr num">98,000円（税込）</span></a></li>
+    <li><a href="index.html#option"><span class="nm">戸籍で家系図をつくる<small class="opt-l">（オプション）</small></span><span class="pr num">100,000円（税込）</span></a></li>
+  </ul>
+  <a class="box go" href="index.html#mousikomi"><b>お申し込み</b>名字と本籍地の村を手がかりに調査を始められます</a>
+  <a class="box" href="tel:047-384-8828"><b>お電話</b><span class="num">047-384-8828</span><br>平日 9:00〜17:00</a>
+  <p class="small"><a href="kiyaku.html">ご利用規約</a><br><a href="tokusho.html">特定商取引法に基づく表示</a><br><a href="privacy.html">個人情報の取り扱い</a><br><a href="menseki.html">免責事項</a></p>
+</aside>
+<main>
+<section class="wrap sub">
+  <h2><span class="kicker">ご依頼の前にお読みください</span>免責事項</h2>
+    <p>綴　つづり（大高　充）のサービスとこのサイトについて、次のとおり定めます。</p>
+    <table>
+      <tr><th>調べた結果</th><td>確認できる記録の量と内容は、資料がどれだけ残っているかによって異なります。特定の結果（家系が武家であった、ある人物につながる、など）をお約束するものではありません。料金は、見つかった量にかかわらず申込書のとおりです</td></tr>
+      <tr><th>記録と言い伝えの内容</th><td>古い本や文書、言い伝えに書かれたことが、そのまま史実であるとは限りません。当方は、どの資料に記載されている内容かを示し、確かさの度合いを添えてお伝えします。その内容の真偽までを保証するものではありません</td></tr>
+      <tr><th>系図と冊子の用途</th><td>お渡しする系図と冊子は、観賞と記念のためのものです。相続や登記などの手続き、身分の証明には、役場が発行する戸籍謄本などをお使いください</td></tr>
+      <tr><th>新たに判明する事実</th><td>除籍謄本などを読み解くなかで、養子縁組、再婚、認知など、新たな事実が判明することがあります。記載内容をそのままお伝えし、冊子への掲載方法はご相談のうえで決めます</td></tr>
+      <tr><th>生成画像</th><td>綴・伝承帖などに掲載する画像は、生成AIによって作成した想像図です。実在の人物や場所を写したものではありません</td></tr>
+      <tr><th>お届けの遅れ</th><td>郵便事故、天災、外部の事業者が提供するサービス（決済、メール、AIサービスなど）の障害など、当方の責めに帰さない事由によってお届けが遅れた場合や損害が生じた場合、当方は責任を負いかねます。遅れが生じたときは、速やかにご連絡します</td></tr>
+      <tr><th>損害賠償の額</th><td>当方の軽過失によりご依頼者に損害が生じた場合、賠償額は、そのご依頼に対してお支払いいただいた料金を上限とします</td></tr>
+      <tr><th>このサイトの内容</th><td>このサイトに掲載している内容は、掲載時点のものです。料金やサービスの内容は、予告なく変更することがあります。ただし、お申込み後の料金は、申込書のとおりです。見本は、架空の家系である安東家を題材に作成しています</td></tr>
+      <tr><th>著作権</th><td>このサイトに掲載している文章と画像の著作権は、綴　つづりに帰属します。無断での複製・転載はご遠慮ください</td></tr>
+      <tr><th>リンク先</th><td>このサイトからリンクした外部のサイトの内容については、責任を負いかねます</td></tr>
+    </table>
+    <p class="note">この内容を改めるときは、この頁でお知らせします。2026年9月24日　制定</p>
+</section>
+
+<section class="wrap"><p><a href="index.html">← 綴のご案内へ戻る</a></p>
+<p class="kitei-links"><a href="kiyaku.html">ご利用規約</a>　｜　<a href="tokusho.html">特定商取引法に基づく表示</a>　｜　<a href="privacy.html">個人情報の取り扱い（プライバシーポリシー）</a>　｜　<a href="menseki.html">免責事項</a></p></section>
+</main>
+</div>
+
+</body>
+</html>

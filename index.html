@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>綴　つづり｜家系調査</title>
+<meta name="description" content="名字と、明治ごろの本籍地の村が分かれば、ご先祖が暮らした村を古い記録からたどれます。綴・一葉 500円／綴・見立帖 30,000円／綴・伝承帖 98,000円。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── 色 ── */
+:root{
+  --paper:#FBF8F1; --ink:#23201B; --mute:#5D574C; --line:#DCD3C2;
+  --accent:#7A4E2D; --red:#A8433C; --soft:#F1EADB; --card:#FFFFFF; --on-accent:#FFFFFF;
+  --shadow:0 1px 2px rgba(35,32,27,.06), 0 6px 18px rgba(35,32,27,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#1B1916; --ink:#EDE7DA; --mute:#B3AA9A; --line:#3A352D;
+    --accent:#C9946A; --red:#D98A83; --soft:#242019; --card:#221F1A; --on-accent:#1B1916;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1B1916; --ink:#EDE7DA; --mute:#B3AA9A; --line:#3A352D;
+  --accent:#C9946A; --red:#D98A83; --soft:#242019; --card:#221F1A; --on-accent:#1B1916;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+}
+
+/* ── 字 ──
+   見出し・品名・額＝Zen Old Mincho（格）／本文・箇条・注＝Noto Sans JP 300（細いゴシック。2026-09-24 依頼者が C を選んだ）。
+   読む相手は 60〜70 代。本文 18px・注も 15px を下限にし、行間は 1.9。 */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans",sans-serif;
+  font-size:18px; font-weight:300; line-height:1.9; font-feature-settings:"palt" 0; font-kerning:normal;
+  overflow-x:hidden;
+}
+.m, h1, h2, h3, .name, .fee b, .step h3{font-family:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif}
+img{max-width:100%; display:block; height:auto}
+a{color:var(--accent)}
+.wrap{max-width:46rem; margin:0 auto; padding:0 16px}
+.wide{max-width:62rem}
+p{margin:0 0 1rem}
+figure{margin:0}
+.num{font-variant-numeric:tabular-nums lining-nums; letter-spacing:.02em}
+
+/* 見出しの三段：h1（看板）／h2（節）／h3（小節） */
+h1{font-size:2rem; line-height:1.5; margin:1.8rem 0 .8rem; font-weight:700; letter-spacing:.02em}
+h1 .kicker{text-wrap:pretty; display:block; font-family:"Noto Sans JP",sans-serif; font-size:1rem; font-weight:500; color:var(--mute); line-height:1.8; margin-bottom:.8rem; letter-spacing:.03em}
+h2{font-size:1.6rem; line-height:1.5; margin:3.4rem 0 1rem; padding:0 0 .5rem; border-bottom:1px solid var(--line); font-weight:700; letter-spacing:.02em}
+h2 .kicker{display:block; font-family:"Noto Sans JP",sans-serif; font-size:.94rem; font-weight:500; color:var(--accent); letter-spacing:.12em; margin-bottom:.35rem}
+h3{font-size:1.25rem; line-height:1.55; margin:2.2rem 0 .8rem; font-weight:700; letter-spacing:.02em}
+h3.chu{padding-left:.7rem; border-left:4px solid var(--accent)}
+.yomi{font-family:"Noto Sans JP",sans-serif; font-size:.9rem; font-weight:400; color:var(--mute); margin-left:.7rem; letter-spacing:.1em; white-space:nowrap}
+.lede{font-size:1.1rem; line-height:2}
+.note{font-size:.9rem; color:var(--mute); line-height:1.85}
+figcaption{font-size:.9rem; color:var(--mute); line-height:1.75; margin-top:.55rem}
+figcaption b{color:var(--ink); font-weight:700; display:block}
+
+/* ── 看板 ── */
+header.top{border-bottom:1px solid var(--line); background:var(--card); position:sticky; top:0; z-index:5}
+header.top .wrap{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; padding-top:.7rem; padding-bottom:.7rem}
+.brand{display:flex; align-items:baseline; gap:.6rem; font-weight:700; white-space:nowrap}
+.brand .mark{font-size:1.6rem; letter-spacing:.14em}
+.brand .sub{font-size:.9rem; font-weight:500; color:var(--mute); letter-spacing:.1em}
+header.top .tel{font-size:.95rem; color:var(--mute); white-space:nowrap}
+header.top .tel a{color:var(--ink); text-decoration:none; font-weight:700}
+
+.hero img{width:100%; border:1px solid var(--line)}
+
+/* ── 三つの綴り（道の全体） ── */
+.michi{display:grid; grid-template-columns:1fr 1.25fr 1fr; gap:.9rem; align-items:stretch; margin:1.4rem 0 .6rem}
+.step{display:block; text-decoration:none; color:inherit; background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1rem; position:relative}
+.step.main{border:2px solid var(--accent); box-shadow:var(--shadow)}
+.step .tag{position:absolute; top:-.75rem; left:.9rem; background:var(--soft); border:1px solid var(--line); color:var(--mute); font-size:.78rem; letter-spacing:.12em; padding:.05rem .6rem; border-radius:3px}
+.step.main .tag{background:var(--accent); color:var(--on-accent); border-color:var(--accent)}
+.step .th{aspect-ratio:1/1.1; background:var(--soft); border:1px solid var(--line); display:flex; align-items:flex-start; justify-content:center; overflow:hidden; margin:.4rem 0 .8rem}
+.step .th img{width:100%; height:100%; object-fit:contain; object-position:top center; background:#fff}
+.step h3{margin:0 0 .1rem; font-size:1.2rem}
+.step.main h3{font-size:1.4rem}
+.step .price{font-family:"Zen Old Mincho",serif; font-weight:700; font-size:1.35rem; margin:.1rem 0 .3rem}
+.step.main .price{font-size:1.7rem}
+.step .price small{font-family:"Noto Sans JP",sans-serif; font-weight:400; font-size:.8rem; color:var(--mute); margin-left:.3rem}
+.step p{font-size:.92rem; color:var(--mute); line-height:1.75; margin:0}
+.step .go{display:block; margin-top:.5rem; font-size:.9rem; color:var(--accent); font-weight:700}
+
+/* ── 品の札 ── */
+.card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1.2rem 1.2rem 1.3rem; margin:1.2rem 0}
+.card.main{border:2px solid var(--accent); box-shadow:var(--shadow); padding:1.5rem 1.5rem 1.6rem}
+.card .head{display:flex; flex-wrap:wrap; align-items:baseline; gap:.2rem .5rem; margin-bottom:.3rem}
+.card .name{font-size:1.55rem; font-weight:700; margin:0}
+.card.main .name{font-size:1.9rem}
+.card .for{font-size:1rem; color:var(--accent); margin:0 0 .8rem; font-weight:500}
+.card ul{margin:.4rem 0 1rem; padding-left:1.3rem}
+.card li{margin-bottom:.5rem}
+.card li b{font-weight:700}
+li b.ko{display:block}  /* 箇条の小見出し。句点を置かず、説明は次の行に〈依頼者 2026-09-24〉 */
+.two{display:grid; grid-template-columns:11rem 1fr; gap:1.4rem; align-items:start}
+.two.big{grid-template-columns:15rem 1fr}
+.two .th{background:var(--soft); border:1px solid var(--line); overflow:hidden}
+.two .th img{width:100%; background:#fff}
+.fee{border-top:1px solid var(--line); padding-top:.9rem; margin-top:.4rem; display:flex; flex-wrap:wrap; align-items:baseline; gap:.3rem 1rem}
+.fee b{font-size:2rem; font-weight:700; letter-spacing:.02em; line-height:1.3}
+.card.main .fee b{font-size:2.4rem}
+.fee span{font-size:.92rem; color:var(--mute); line-height:1.75; flex:1 1 14rem}
+
+/* 冊子の見開き（頁を切らずに三枚並べる） */
+.pages{display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:1.2rem 0 .3rem}
+.pages img{width:100%; aspect-ratio:909/1287; object-fit:contain; object-position:top center; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow)}
+.pages figcaption{text-align:center}
+
+/* 一冊の中身（章の並び） */
+ol.mokuji{counter-reset:m; list-style:none; margin:0 0 .8rem; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:0 2rem}
+ol.mokuji li{counter-increment:m; position:relative; padding:.6rem 0 .6rem 2.6rem; border-bottom:1px solid var(--line); font-size:.95rem; line-height:1.75; color:var(--mute)}
+ol.mokuji li b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.12rem; color:var(--ink); line-height:1.6; margin-bottom:.1rem}
+ol.mokuji li::before{content:counter(m); position:absolute; left:0; top:.85rem; width:1.7rem; height:1.7rem; border:1px solid var(--accent); border-radius:50%; color:var(--accent); font-size:.85rem; font-weight:700; display:flex; align-items:center; justify-content:center}
+
+/* 調べる記録・お約束（四つ／三つの柱） */
+.cols{display:grid; grid-template-columns:repeat(2,1fr); gap:1rem 1.4rem}
+.cols.four{grid-template-columns:repeat(4,1fr)}
+.cols.three{grid-template-columns:repeat(3,1fr)}
+.cols > div{border-top:2px solid var(--accent); padding-top:.7rem; font-size:.95rem; line-height:1.8; color:var(--mute)}
+.cols > div b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.15rem; color:var(--ink); margin-bottom:.25rem; line-height:1.5}
+
+/* 図の見本：切らずに、幅いっぱいに */
+.zu{display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem 1.4rem; margin:1rem 0; align-items:start}
+.zu figure{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.8rem .8rem 1rem}
+.zu img{width:100%; background:#fff}
+.zu figure.span{grid-column:1/-1}
+/* 見立帖の図：四枚を同じ大きさの箱に揃える（図5 は幅いっぱいなのでそのまま） */
+/* 伝承帖の見本：絵は幅いっぱいの帯、頁の見本は同じ大きさの三枚に揃える */
+.zu figcaption b span{font-family:"Noto Sans JP",sans-serif; font-weight:500; color:var(--red); font-size:.85rem; margin-right:.5rem; letter-spacing:.06em}
+
+/* 確度の印 */
+.wakaru{display:grid; grid-template-columns:1.25fr 1fr; gap:1.6rem 2.2rem; align-items:start}
+.jirei{border-left:3px solid var(--accent); background:var(--card); padding:1rem 1.2rem; border-radius:0 6px 6px 0}
+.jirei b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.1rem; margin-bottom:.4rem}
+.jirei p{margin:.4rem 0 0; font-size:.96rem; line-height:1.9; color:var(--mute)}
+.toi{margin:0}
+.toi > div{border-top:2px solid var(--accent); padding-top:.7rem; margin-bottom:1.1rem; font-size:.95rem; line-height:1.8; color:var(--mute)}
+.toi > div b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.15rem; color:var(--ink); margin-bottom:.25rem; line-height:1.55}
+.kaku{display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; font-size:.95rem; margin:1rem 0 0}
+.kaku span b{font-family:"Zen Old Mincho",serif; font-size:1.2rem; margin-right:.35rem}
+
+/* 始め方 */
+ol.nagare{counter-reset:n; list-style:none; margin:0; padding:0}
+ol.nagare li{counter-increment:n; position:relative; padding:.3rem 0 1rem 3rem; line-height:1.85}
+ol.nagare li::before{content:counter(n); position:absolute; left:0; top:.45rem; width:2rem; height:2rem; border-radius:50%;
+  background:var(--accent); color:var(--on-accent); font-size:1rem; font-weight:700; display:flex; align-items:center; justify-content:center}
+ol.nagare li b{display:block; font-family:"Zen Old Mincho",serif; font-size:1.15rem}
+
+/* 申し込み */
+.mousikomi{background:var(--card); border:2px solid var(--accent); border-radius:6px; padding:1.4rem 1.3rem; margin:1.4rem 0; box-shadow:var(--shadow)}
+.mousikomi h3{margin:0 0 .5rem}
+.btn{display:block; text-align:center; background:var(--accent); color:var(--on-accent); text-decoration:none;
+  font-weight:700; font-size:1.15rem; padding:1.05rem 1.2rem; border-radius:6px; margin:.9rem 0 .5rem; line-height:1.5}
+.btn:hover{filter:brightness(1.08)}
+.btn.sub{background:var(--card); color:var(--accent); border:2px solid var(--accent)}
+.btn.inline{display:inline-block; margin:.6rem 0 0; padding:.8rem 1.6rem; font-size:1.05rem}
+.renraku{font-size:1.05rem; line-height:2.1; margin-top:.8rem}
+.renraku a{color:var(--accent); font-weight:700}
+
+/* お選びいただけるもの */
+.opt{background:var(--soft); border:1px solid var(--line); border-radius:6px; padding:1.1rem 1.2rem; margin:1rem 0}
+.opt .name{font-size:1.25rem}
+.opt .tag{font-size:.8rem; color:var(--mute); border:1px solid var(--line); background:var(--card); border-radius:3px; padding:.1rem .55rem; margin-left:.6rem; vertical-align:.15rem; white-space:nowrap}
+.opt p{font-size:.95rem; color:var(--mute); margin:.5rem 0 .6rem}
+.opt .fee{border-top:none; padding-top:0; margin-top:0}
+.opt .fee b{font-size:1.45rem}
+.fee-table{width:100%; border-collapse:collapse; margin:.8rem 0 0; font-size:.95rem}
+.fee-table th{width:auto; white-space:nowrap; background:transparent; border:none; border-top:1px solid var(--line); padding:.55rem .8rem .55rem 0; font-weight:400; color:var(--mute)}
+.fee-table td{border:none; border-top:1px solid var(--line); padding:.55rem 0; text-align:right; white-space:normal}
+.fee-table td.txt{text-align:left; padding-left:1.2rem; color:var(--ink)}
+.fee-table tr:first-child th,.fee-table tr:first-child td{border-top:none}
+
+/* お尋ね */
+details{border:1px solid var(--line); border-radius:6px; background:var(--card); padding:.4rem 1.1rem; margin:.8rem 0}
+summary{cursor:pointer; font-weight:700; padding:.7rem 0; font-size:1.05rem}
+details p{margin:.2rem 0 .9rem; color:var(--mute)}
+
+/* 特商法 */
+table{width:100%; border-collapse:collapse; font-size:.95rem; line-height:1.8; margin:1rem 0}
+th,td{border:1px solid var(--line); padding:.65rem .8rem; text-align:left; vertical-align:top}
+th{width:10.5rem; background:var(--soft); font-weight:500; white-space:nowrap}
+/* 下の畳み（特商法・個人情報）。小さく */
+.kitei-links{font-size:.8rem; color:var(--mute); text-align:center; margin:1.2rem 0}
+.kitei-links a{color:var(--mute)}
+.kitei{padding-top:.4rem; padding-bottom:.4rem}
+.kitei details{background:transparent; border:none; border-top:1px solid var(--line); border-radius:0; padding:0; margin:0}
+.kitei summary{font-size:.85rem; font-weight:500; color:var(--mute); padding:.6rem 0}
+.kitei table{font-size:.8rem; line-height:1.7; margin:.4rem 0 .8rem}
+.kitei th{width:9rem; padding:.45rem .6rem}
+.kitei td{padding:.45rem .6rem}
+.kitei h3{font-size:.85rem; font-weight:700; margin:1rem 0 .3rem}
+.kitei ol{font-size:.8rem; line-height:1.8; color:var(--mute); margin:.2rem 0 .6rem; padding-left:1.4rem}
+.kitei p{font-size:.8rem; color:var(--mute); margin:.3rem 0 .8rem}
+
+
+footer{border-top:1px solid var(--line); margin-top:3.5rem; padding:1.6rem 0 3rem; background:var(--card)}
+
+/* ── 品の仕切り ──
+   一葉・見立帖・伝承帖の三節を、幅いっぱいの帯で一つずつ包む。
+   帯の頭に太い罫、節の見出しは丸に「一・二・三」（CSS の番号。文言には足さない）。
+   かなめの見立帖だけ地を少し染め、上下を二重の罫で挟む。 */
+main{counter-reset:shina}
+.shina{counter-increment:shina; border-top:3px solid var(--accent); padding:2.2rem 0 3rem; margin-top:3.2rem; scroll-margin-top:3.6rem}
+.shina.kaname{background:var(--soft); border-top:6px double var(--accent); border-bottom:6px double var(--accent); padding-bottom:3.4rem}
+.shina.kaname + .shina{border-top:none; margin-top:0}
+.shina > .wrap > h2{border-bottom:none; margin-top:0; padding:0 0 .6rem 4.2rem; position:relative; font-size:2rem; line-height:1.45; min-height:3.4rem}
+.shina > .wrap > h2::before{content:counter(shina,cjk-ideographic); position:absolute; left:0; top:.1rem; width:3.2rem; height:3.2rem; border-radius:50%;
+  background:var(--accent); color:var(--on-accent); font-size:1.55rem; font-weight:700; line-height:1; display:flex; align-items:center; justify-content:center; letter-spacing:0}
+.shina > .wrap > h2 .kicker{color:var(--accent)}
+.shina.kaname > .wrap > h2{font-size:2.25rem}
+.shina .card,.shina .zu figure,.shina /* 節の中の小見出しは品の見出しよりはっきり小さく */
+.shina h3.chu{font-size:1.08rem; margin:2.4rem 0 .7rem; padding-left:.6rem; border-left:3px solid var(--accent); font-weight:700; letter-spacing:.04em}
+
+/* ── 携帯の幅 ── */
+@media (max-width:720px){
+  body{font-size:17px}
+  .fee-table th{white-space:normal; padding-right:.6rem}
+  h1{font-size:1.6rem}
+  h1 br{display:none}
+  h2{font-size:1.4rem; margin-top:2.8rem}
+  h3{font-size:1.18rem}
+  .shina{padding:1.6rem 0 2.2rem; margin-top:2.4rem}
+  .shina > .wrap > h2{font-size:1.5rem; padding-left:3.1rem; min-height:2.6rem}
+  .shina.kaname > .wrap > h2{font-size:1.6rem}
+  .shina > .wrap > h2::before{width:2.4rem; height:2.4rem; font-size:1.2rem; top:.15rem}
+  .shina h3.chu{font-size:1.02rem}
+  header.top .tel{display:none}
+  .michi{grid-template-columns:1fr; gap:1.2rem}
+  .michi .step{display:grid; grid-template-columns:5.5rem 1fr; gap:0 .9rem; align-items:start}
+  .michi .step .tag{top:-.7rem}
+  .michi .step .th{aspect-ratio:auto; height:7.6rem; margin:.2rem 0 0; grid-row:1/6}
+  .michi .step.main .th{height:8.6rem}
+  .two,.two.big{grid-template-columns:1fr}
+  .two .th{max-width:14rem}
+  .pages{gap:.5rem}
+  .pages figcaption{font-size:.8rem}
+  ol.mokuji{grid-template-columns:1fr}
+  .cols,.cols.four,.cols.three,.zu,  .card.main{padding:1.2rem 1rem 1.3rem}
+  .card.main .name{font-size:1.6rem}
+  .card.main .fee b{font-size:2.1rem}
+  th{width:auto; white-space:normal}
+  table,thead,tbody,tr,th,td{display:block}
+  th{border-bottom:none}
+  td{border-top:none; margin-bottom:.5rem}
+}
+@media (max-width:400px){
+  .pages{grid-template-columns:1fr 1fr}
+  .pages figure:last-child{display:none}
+}
+
+/* ── 家系図職人風の枠：上にタブ、左にサービスの一覧〈依頼者 2026-09-24〉 ── */
+header.top .wrap.wide{max-width:76rem}
+nav.tabs{border-top:1px solid var(--line); background:var(--card)}
+nav.tabs ul{display:flex; max-width:76rem; margin:0 auto; padding:0 16px; list-style:none; overflow-x:auto; scrollbar-width:none}
+nav.tabs ul::-webkit-scrollbar{display:none}
+nav.tabs li{flex:1 0 auto}
+nav.tabs a{display:block; text-align:center; padding:.5rem .9rem; font-size:.9rem; font-weight:500; color:var(--ink); text-decoration:none; border-right:1px solid var(--line); white-space:nowrap}
+nav.tabs li:first-child a{border-left:1px solid var(--line)}
+nav.tabs a:hover, nav.tabs a[aria-current]{background:var(--soft); color:var(--accent)}
+.frame{max-width:76rem; margin:0 auto; padding:0 16px; display:grid; grid-template-columns:15rem minmax(0,1fr); gap:2.4rem; align-items:start}
+.frame > main .wrap{padding-left:0; padding-right:0}
+.frame > main [id]{scroll-margin-top:8rem}
+aside.side{position:sticky; top:7.3rem; padding:2rem 0 1.5rem; max-height:calc(100vh - 7.3rem); overflow-y:auto; scrollbar-width:none}
+aside.side::-webkit-scrollbar{display:none}
+.side .side-h{font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif; font-weight:700; font-size:1rem; letter-spacing:.06em; padding:.45rem .8rem; background:var(--soft); border:1px solid var(--line); border-bottom:2px solid var(--accent); margin:0}
+.side ul.plans{list-style:none; margin:0 0 1.2rem; padding:0; border:1px solid var(--line); border-top:none; background:var(--card)}
+.side ul.plans li + li{border-top:1px solid var(--line)}
+.side ul.plans a{display:block; padding:.6rem .8rem; text-decoration:none; color:var(--ink); line-height:1.5}
+.side ul.plans a:hover{background:var(--soft)}
+.side ul.plans a::before{content:"›"; color:var(--accent); margin-right:.45rem; font-weight:700}
+.side ul.plans .nm{font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif; font-weight:700; font-size:1.02rem}
+.side ul.plans .pr{display:block; padding-left:1rem; font-size:.84rem; color:var(--mute)}
+.side ul.plans .opt-l{font-family:"Noto Sans JP",sans-serif; font-weight:500; font-size:.8rem; color:var(--mute); white-space:nowrap}
+.side .box{display:block; border:1px solid var(--line); background:var(--card); border-radius:6px; padding:.8rem .9rem; margin:0 0 .9rem; text-decoration:none; color:var(--ink); font-size:.88rem; line-height:1.7}
+.side .box b{display:block; font-family:"Zen Old Mincho","Hiragino Mincho ProN",serif; font-size:1.05rem; color:var(--accent)}
+.side .box.go{background:var(--accent); color:var(--on-accent); border-color:var(--accent); text-align:center}
+.side .box.go b{color:var(--on-accent)}
+.side .small{font-size:.8rem; line-height:1.9; color:var(--mute)}
+.side .small a{color:var(--mute)}
+@media (max-width:900px){
+  .frame{display:block}
+  aside.side{position:static; max-height:none; overflow:visible; padding:1.2rem 0 0}
+  .side .box, .side .small{display:none}
+  .side ul.plans{display:grid; grid-template-columns:1fr 1fr; margin-bottom:0}
+  .side ul.plans li + li{border-top:none}
+  .side ul.plans li{border-top:1px solid var(--line)}
+  .side ul.plans li:nth-child(odd){border-right:1px solid var(--line)}
+  .side ul.plans li:first-child, .side ul.plans li:nth-child(2){border-top:none}
+  .frame > main [id]{scroll-margin-top:6rem}
+}
+.anshin{border:1px solid var(--line); border-left:4px solid var(--accent); background:var(--card); padding:.8rem 1rem; margin:0 0 1.2rem; font-size:.95rem; line-height:1.8; color:var(--mute)}
+.anshin b{display:block; font-family:"Zen Old Mincho",serif; color:var(--ink); font-size:1.08rem}
+.hajime{font-size:.92rem; line-height:1.8; border:1px dashed var(--accent); padding:.6rem .8rem; border-radius:4px}
+/* 見本（案一 2026-09-24）：入口を頭に、図は同じ大きさで並べ、押すと大きく開く */
+.mihon-top{display:grid; grid-template-columns:11rem 1fr; gap:1.3rem; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1rem 1.1rem; margin:1.2rem 0 1.6rem}
+.mihon-top .hyo img{width:100%; background:#fff; border:1px solid var(--line)}
+.mihon-top b{font-family:"Zen Old Mincho",serif; font-size:1.2rem}
+.mihon-top p{margin:.3rem 0 .8rem}
+.btn-mihon{display:inline-block; background:var(--accent); color:var(--on-accent); text-decoration:none; border-radius:4px; padding:.5rem 1.1rem; font-weight:500}
+.zu.roku{grid-template-columns:repeat(3,1fr); gap:1rem}
+.zu.yon{grid-template-columns:repeat(4,1fr); gap:1rem}
+.zu.roku figure,.zu.yon figure{padding:.5rem .5rem .6rem; cursor:zoom-in}
+.zu.roku img{aspect-ratio:4/3; object-fit:contain; object-position:center}
+.zu.yon img{aspect-ratio:3/4; object-fit:contain; object-position:top center}
+.zu.yon img[src$=".jpg"]{object-fit:cover; object-position:center}
+.zu.roku figcaption,.zu.yon figcaption{font-size:.88rem; margin-top:.4rem}
+.zu .setsu{display:none}
+dialog.oki{border:none; padding:0; background:transparent; max-width:min(96vw,1100px); max-height:94vh}
+dialog.oki::backdrop{background:rgba(20,18,15,.82)}
+dialog.oki figure{margin:0; background:var(--card); border-radius:6px; padding:.8rem .8rem 1rem; max-height:94vh; overflow:auto}
+dialog.oki img{width:100%; height:auto; max-height:76vh; object-fit:contain; background:#fff}
+dialog.oki figcaption{font-size:.95rem; line-height:1.75; margin-top:.6rem}
+dialog.oki figcaption b{display:block}
+dialog.oki figcaption b span{font-weight:500; color:var(--red); font-size:.85rem; margin-right:.5rem; letter-spacing:.06em}
+dialog.oki .setsu{display:block}
+dialog.oki button{float:right; border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:4px; padding:.2rem .7rem; font:inherit; cursor:pointer; margin-bottom:.4rem}
+@media (max-width:900px){
+  .zu.roku,.zu.yon{grid-template-columns:1fr 1fr}
+  .mihon-top{grid-template-columns:7rem 1fr; gap:.9rem}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap wide">
+    <div class="brand"><span class="mark m">綴</span><span class="sub">つづり｜家系調査</span></div>
+    <div class="tel num">お電話 <a href="tel:047-384-8828">047-384-8828</a>（平日 9:00〜17:00）</div>
+  </div>
+  <nav class="tabs" aria-label="頁の案内"><ul><li><a href="#top" aria-current="page">トップページ</a></li><li><a href="#service">3つのサービス</a></li><li><a href="#hoshin">制作の方針</a></li><li><a href="#mousikomi">お申し込み</a></li><li><a href="#qa">よくあるお尋ね</a></li><li><a href="about.html">綴について</a></li><li><a href="kiyaku.html">ご利用規約</a></li></ul></nav>
+</header>
+
+<div class="frame">
+<aside class="side" aria-label="サービスの一覧">
+  <p class="side-h">サービス一覧</p>
+  <ul class="plans">
+    <li><a href="#ichiyo"><span class="nm">綴・一葉</span><span class="pr num">500円（税込）</span></a></li>
+    <li><a href="#mitate"><span class="nm">綴・見立帖</span><span class="pr num">30,000円（税込）</span></a></li>
+    <li><a href="#densho"><span class="nm">綴・伝承帖</span><span class="pr num">98,000円（税込）</span></a></li>
+    <li><a href="#option"><span class="nm">戸籍で家系図をつくる<small class="opt-l">（オプション）</small></span><span class="pr num">100,000円（税込）</span></a></li>
+  </ul>
+  <a class="box go" href="#mousikomi"><b>お申し込み</b>名字と本籍地の村を手がかりに調査を始められます</a>
+  <a class="box" href="tel:047-384-8828"><b>お電話</b><span class="num">047-384-8828</span><br>平日 9:00〜17:00</a>
+  <p class="small"><a href="kiyaku.html">ご利用規約</a><br><a href="tokusho.html">特定商取引法に基づく表示</a><br><a href="privacy.html">個人情報の取り扱い</a><br><a href="menseki.html">免責事項</a></p>
+</aside>
+<main>
+
+<!-- ── 看板 ── -->
+<section class="wrap" id="top">
+  <h1><span class="kicker">本籍地の村から、江戸時代以前のご先祖へ。</span>この土地に、あなたの名字の家が<br>どのようにあったのかを書きます</h1>
+
+  <figure class="hero">
+    <img src="img/e-kao.jpg" alt="縁側の机で筆を執る手（生成画像）">
+    <figcaption>家に伝わる古い文書と、土地に残る記録を、一つの読み物にまとめてお届けします。（この絵は生成画像です）</figcaption>
+  </figure>
+
+  <p class="lede" style="margin-top:1.4rem">家に伝わる古い文書は、代を重ねるうちに本家へ集まります。一方、<b>土地に残った記録</b>は、どの家からでもたどれます。村の地誌や郷土史、古文書、古い地図を調べ、同じ名字の家がどのように記されているかを確かめたうえで、一続きの読み物にまとめてお届けします。</p>
+  <p class="lede">始めるために必要なのは、名字と、明治ごろ（1868〜1912年）の本籍地の村の二つだけです。戸籍を集めていなくても始められます。綴・一葉から始めることも、綴・見立帖から始めることもできます。</p>
+  <div class="anshin"><b>途中で中止できます</b>料金は、着手の前にいただきます。着手前のお取消しは、全額を返金します。着手後のお取消しでも、その時点までに完了した成果物をお渡しし、残りの料金を返金します（<a href="kiyaku.html#dai4">ご利用規約の第4条</a>）。</div>
+</section>
+
+<!-- ── 何が分かるか ── -->
+<section class="wrap wide" id="wakaru">
+  <h2 style="margin-top:2.4rem"><span class="kicker">調べると分かること</span>ご先祖は、その村でいつから、どのような暮らしをしていたのか</h2>
+  <div class="wakaru">
+    <div class="toi">
+      <div><b>どの土地から続く家なのか</b>同じ名字の家が全国のどこに何軒あるかを、県、町、字（あざ）の順に確認できます。また、本籍地から何キロ離れた場所に、同じ名字の家が何軒あるかも分かります。</div>
+      <div><b>江戸時代の村で、どのような暮らしだったのか</b>村の戸数と産物、領主、神社と寺の名前が分かります。検地帳や村の証文に同じ名字が出ていれば、その人の名前と年代も読めます。</div>
+      <div><b>もっと古い記録に、同じ名字があるか</b>戦国時代の書状や軍記に、その名字が記された家があります。そうした記録が残る家については、誰がどの戦いに参加し、どのように行動したかまで分かります。</div>
+    </div>
+    <div class="jirei">
+      <b>見本の家では、こう分かりました</b>
+      <p>架空の安東家（本籍地は大分県の長岩屋）の例では、本籍地から約9km離れた佐野に、天正8年（1580年）の鞍懸城の戦いを伝える書状が9通残っていました。これらの書状を伝えてきたのは、安東家と同じ名字の家です。その家は、江戸時代に庄屋を務めました。天明6年（1786年）には、安東貞五郎が学者の家に婿入りしました。文政8年（1825年）生まれの安東九華は庄屋を継ぎました。さらに九華は、明治15年（1882年）に郡長を務めています。本籍地の長岩屋は、鎌倉時代から天念寺の山として記録に残る土地でした。</p>
+      <p>記録の残り方には、村ごとに差があります。戦国時代の書状が9通残っている村もあれば、村の古い来歴について、郡誌に「徴すべきなし」と記されている村もあります。そうした村でも、郡誌の村の章、明治（1868〜1912年）以降の名簿、寺や行事の記録を組み合わせて、一冊にまとめられます。家系の記録がどの時代まで残っているかは、見立帖でご確認いただけます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 三つの品 ── -->
+<section class="wrap wide" id="service">
+  <h2 style="margin-top:2.4rem"><span class="kicker">3つのサービス</span>綴・一葉、または綴・見立帖から始められます。綴・伝承帖は、綴・見立帖をご依頼いただいた方を対象としています</h2>
+  <div class="michi">
+    <a class="step" href="#ichiyo">
+      <span class="tag">はじめの一枚</span>
+      <div class="th"><img src="img/furusato.png" alt="綴・一葉の見本（A4用紙の両面）"></div>
+      <h3>綴・一葉</h3>
+      <div class="price num">500円<small>（税込）</small></div>
+      <p>A4用紙の両面に、名字がどの土地に多いか、本籍地がどのような村かをまとめます。さらに、家系についての一文も記載します。</p>
+      <span class="go">くわしく ↓</span>
+    </a>
+    <a class="step" href="#mitate">
+      <span class="tag">村を読む一冊</span>
+      <div class="th"><img src="img/mitate_p1.png" alt="綴・見立帖の表紙（見本）"></div>
+      <h3>綴・見立帖</h3>
+      <div class="price num">30,000円<small>（税込）</small></div>
+      <p>A4判で、20ページ前後の冊子です。地図と年表、菩提寺と考えられる寺院、名字が出てくる古い本や文書を収録します。家系が村でどのような役割を担っていたかも分かります。</p>
+      <span class="go">くわしく ↓</span>
+    </a>
+    <a class="step" href="#densho">
+      <span class="tag">その先の一冊</span>
+      <div class="th"><img src="img/densho_toc.png" alt="綴・伝承帖の一頁目（見本）"></div>
+      <h3>綴・伝承帖</h3>
+      <div class="price num">98,000円<small>（税込）</small></div>
+      <p>見立帖で分かったことを年代順に並べ、一続きの物語としてまとめた一冊の読み物です。</p>
+      <span class="go">くわしく ↓</span>
+    </a>
+  </div>
+  <p class="note">見立帖をお読みになってから、その先へ進むかをお決めいただけます。ここに載せた見本は、架空の家（安東家）のものです。</p>
+</section>
+
+<!-- ── 綴・一葉 ── -->
+<div class="shina" id="ichiyo">
+<section class="wrap">
+  <h2><span class="kicker">はじめの一枚</span>綴・一葉<span class="yomi">つづり　いちよう</span></h2>
+  <div class="mihon-top">
+    <a href="mihon/mihon_ando_ichiyo.pdf" class="hyo"><img src="img/furusato.png" alt="綴・一葉の見本の表面"></a>
+    <div>
+      <b>綴・一葉の見本（2ページ）</b>
+      <p>架空の家（安東家）の一葉を、PDFでお読みいただけます。A4判の両面印刷です。</p>
+      <a class="btn-mihon" href="mihon/mihon_ando_ichiyo.pdf">PDFで全編を読む</a>
+    </div>
+  </div>
+
+  <div class="card">
+        <p class="for">A4用紙の両面に、名字と本籍地の村について、次の6項目をまとめます</p>
+        <ul>
+          <li><b class="ko">名字の人数</b>全国に何人いて、最も多いのはどの県か、本籍地の市町村には何人いるかまで示します</li>
+          <li><b class="ko">名字の多い町</b>本籍地の周辺で名字の多い町を、本籍地からの距離とともに並べます</li>
+          <li><b class="ko">名字の分布図</b>県をまたいで、どの土地に名字が多いかを、町名と割合とともに地図上で確認できます</li>
+          <li><b class="ko">本籍地の村の成り立ち</b>中世の荘園から江戸時代の領主、明治（1868〜1912年）の町村制を経て、現在の地名までが分かります</li>
+          <li><b class="ko">村の寺と、現在まで続く行事</b>寺の名前と宗派、村に残っている行事を紹介します</li>
+          <li><b class="ko">家系についての一文</b>ここまでの5項目をもとに、村でどのような家だったのかを一文にまとめます</li>
+        </ul>
+        <p class="note" style="margin:0">綴・一葉をご覧になってから、綴・見立帖へお進みいただけます。</p>
+    <p class="fee"><b class="num">500円</b><span>（税込）。講座や店頭では、その場でお渡しします。ご自宅へはPDFでお送りし、通常は1日ほどで届きます。</span></p>
+  </div>
+
+  <h3 class="chu">綴・一葉の表と裏（見本）</h3>
+  <div class="zu yon">
+    <figure tabindex="0"><img src="img/furusato.png" alt="綴・一葉の表面。名字の広がりと分布図、名字の多い町の一覧表"><figcaption><b><span>表面</span>名字の広がり</b><span class="setsu">名字の人数と分布を示す地図を掲載します。本籍地の周辺で名字の多い町を、本籍地からの距離とともに表に示します。</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/ichiyo_p2.png" alt="綴・一葉の裏面。本籍地の村の成り立ち、村の寺と行事、家の来歴"><figcaption><b><span>裏面</span>本籍地の地域と、家の来歴</b><span class="setsu">本籍地の村の成り立ち、寺と行事を記します。続いて、その村でどのような家だったのかをまとめ、綴・見立帖で調べることを記します。</span></figcaption></figure>
+  </div>
+  <p class="note">図を押すと拡大表示され、説明をお読みいただけます。ここに掲載しているのは、架空の家（安東家）の見本です。</p>
+</section>
+</div>
+
+<!-- ── 綴・見立帖（主役） ── -->
+<div class="shina" id="mitate">
+<section class="wrap wide">
+  <h2><span class="kicker">村を読む一冊</span>綴・見立帖<span class="yomi">つづり　みたてちょう</span>　本籍地の村と家系のことが、一冊で分かります</h2>
+
+  <div class="wrap" style="padding:0">
+    <p class="lede">名字と本籍地の村を手がかりに、村の地誌や郷土史、古文書、古い地図を調べます。記録から、<b>ご先祖が村でどのように暮らしてきたか</b>を読み取り、地図と年表を含む20ページほどの冊子にまとめます。たどれる時代は家ごとに異なりますが、この一冊で、家系の記録がどの時代まで残っているかが分かります。そのうえで、先へ進むかをお決めいただけます。</p>
+  </div>
+
+  <div class="mihon-top">
+    <a href="mihon/mihon_ando_mitate.pdf" class="hyo"><img src="img/mitate_p1.png" alt="綴・見立帖の見本の表紙"></a>
+    <div>
+      <b>綴・見立帖の見本（19ページ）</b>
+      <p>架空の家（安東家）の見立帖を、表紙からまとめまでPDFでお読みいただけます。A4判の冊子です。</p>
+      <a class="btn-mihon" href="mihon/mihon_ando_mitate.pdf">PDFで全編を読む</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3 class="name" style="margin:0">綴・見立帖</h3><span class="yomi">つづり　みたてちょう</span></div>
+    <p class="for">A4判で、20ページ前後の冊子です。地図と年表も冊子に収録します</p>
+    <ul>
+      <li><b class="ko">名字がどこに多いか</b>全国、県、町、字（あざ）の4つの地図で、順に確認できます</li>
+      <li><b class="ko">本籍地の村の成り立ち</b>村の戸数と産物、領主、神社と寺から、現在の地名までが載ります</li>
+      <li><b class="ko">菩提寺と考えられる寺院</b>宗派と本籍地からの距離を添えて、3つほど紹介します</li>
+      <li><b class="ko">名字が出てくる古い本や文書</b>本の名前と年代、どこで読めるかが分かります</li>
+      <li><b class="ko">村での家の役目と暮らし向き</b>集まった記録から、その家が村でどのような役割を担っていたのかが分かります</li>
+    </ul>
+    <p class="fee"><b class="num">30,000円</b><span>（税込）。PDFでお届けし、まとめの頁はA4用紙に印刷して郵送します。印刷製本版は＋8,000円です。納期の目安は1か月です。</span></p>
+    <a class="btn inline" href="#mousikomi">綴・見立帖を申し込む</a>
+  </div>
+
+  <details>
+  <summary>一冊の中身（章の並び）</summary>
+  <ol class="mokuji">
+    <li><b>名字がどこに多いか</b>全国、県、町、字の4つの地図で、順にたどれます</li>
+    <li><b>本籍地のまわりにある同じ名字の家</b>どの土地に何軒あるかが、本籍地からの距離とともに示します</li>
+    <li><b>近代の名簿に出る名字</b>明治（1868〜1912年）から昭和（1926〜1989年）にかけての名簿に記された、同じ名字の人物の名前が読めます</li>
+    <li><b>本籍地の村の成り立ち</b>村の戸数と産物、領主、神社と寺、現在のどの地名にあたるかが分かります</li>
+    <li><b>土地の由来と、語られてきた話</b>地名の起こりと、その土地に伝わる話を、載っている本の名前とともにお読みいただけます</li>
+    <li><b>菩提寺と考えられる寺院</b>本籍地に近い順に3つほど、宗派と距離を添えて掲載します</li>
+    <li><b>江戸時代の村と家系</b>検地帳や村の証文、藩の帳面に、名字がどう出てくるかが分かります</li>
+    <li><b>中世・戦国時代の記録と家の起こり</b>名字の起こりと伝えられる土地や、その時代の記録に見える同じ名字の家を、本籍地からの距離とともに掲載します</li>
+    <li><b>まとめ</b>ここまでの章をもとに、村でどのような家だったのかが分かります</li>
+    <li><b>調べた記録の一覧</b>名字が出たかどうかにかかわらず、調べたすべての記録を、本の名前と所蔵先とともに一覧にします</li>
+    <li><b>別紙「今後のご案内」</b>戸籍で分かること、この先のサービスと費用、さらに掘り下げるときの手がかりを、見立帖とは別にお渡しします</li>
+  </ol>
+  <p class="note">章の厚さは、その土地に残っている記録の量で変わります。江戸時代と明治以降の章が厚くなる家が多く、中世の記録が見つかった家では、中世の章も厚くなります。</p>
+  </details>
+
+  <h3 class="chu">名字を手がかりに調べる、4つの記録</h3>
+  <div class="cols four">
+    <div><b>地誌</b>村の成り立ち、戸数、産物、神社と寺が書かれた本</div>
+    <div><b>郷土史</b>市町村史や郡誌に書かれた、同じ名字の家のこと</div>
+    <div><b>古文書</b>検地帳や侍帳、村の証文など、その時代に書かれた文書</div>
+    <div><b>古い地図</b>絵図と地籍図で、屋敷と田畑の場所が分かります</div>
+  </div>
+
+  <h3 class="chu">冊子に収録されている図とページ（見本のうち6枚）</h3>
+  <div class="zu roku">
+    <figure tabindex="0"><img src="img/zu1_zenkoku.png" alt="図1 全国のどこに多いか。都道府県別の人数を色の濃さで示した日本地図と、多い県の順の表"><figcaption><b><span>図1</span>全国のどこに多いか</b><span class="setsu">県ごとの人数を色の濃さで示します。右の表には、人数の多い県から順に掲載します</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/zu3_nijimi.png" alt="図3 本籍地のまわりで名字の多い土地。県の形に、名字の多さを色で滲ませた地図"><figcaption><b><span>図3</span>本籍地の周辺で名字が多い土地</b><span class="setsu">本籍地のまわりで、どの土地に名字が多いかを示します。色が濃いほど割合が高く、色の広がりが大きいほど世帯数の多い土地を示します。朱色が本籍地です</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/zu2_kyori.png" alt="図2 本籍地からの距離と名字の多さ。横が距離、縦がその土地に占める割合の散布図"><figcaption><b><span>図2</span>本籍地からの距離と、名字の多さ</b><span class="setsu">横軸は本籍地からの距離、縦軸はその土地の世帯に占める同じ名字の世帯の割合です。点の大きさは世帯数を表し、朱色の点は本籍地の町を示します</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/zu4_okori.png" alt="図4 名字の起こりと伝えられる土地、古い文書が残る家、戦いを、時代の順に帯で並べた図"><figcaption><b><span>図4</span>名字の起こりと、同じ名字の家</b><span class="setsu">名字の起こりと伝えられる土地、古い文書が残る家、戦いに関する情報を、時代順に帯で示します。線の種類で、記録の確かさが分かります</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/zu5_chizu.png" alt="図5 図4 の土地を地図に置いたもの。本籍地を中心に、距離の輪と、各地からの点線"><figcaption><b><span>図5</span>本籍地からの距離</b><span class="setsu">図4に示した土地を地図上に配置した図です。輪は本籍地からの距離を、点線はそれぞれの土地から本籍地へつながる道筋を表します</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/mitate_ayumi.png" alt="見立帖の「村のあゆみ」の頁。本文のあとに、年・できごと・載っている本の三列の表"><figcaption><b><span>本文</span>村の成り立ちを、年代順にたどるページ</b><span class="setsu">本文では村の場所と地名の由来を説明し、表では年と出来事を示します。どの本に載っているかも、書名からすべて確認できます</span></figcaption></figure>
+  </div>
+  <p class="note">図を押すと拡大表示され、説明をお読みいただけます。ここに掲載しているのは、架空の家（安東家）の見本です。</p>
+</section>
+</div>
+
+<!-- ── 綴・伝承帖 ── -->
+<div class="shina" id="densho">
+<section class="wrap wide">
+  <h2><span class="kicker">その先の一冊</span>綴・伝承帖<span class="yomi">つづり　でんしょうちょう</span>　家のあゆみが、一冊の読み物になります</h2>
+
+  <div class="mihon-top">
+    <a href="mihon/mihon_ando_densho.pdf" class="hyo"><img src="img/densho_p1.png" alt="綴・伝承帖の見本の表紙"></a>
+    <div>
+      <b>綴・伝承帖の見本（29ページ）</b>
+      <p>架空の家（安東家）の伝承帖を、表紙から終章までPDFでお読みいただけます。A4判の冊子です。</p>
+      <a class="btn-mihon" href="mihon/mihon_ando_densho.pdf">PDFで全編を読む</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="two big">
+      <div class="th"><img src="img/densho_chapter.png" alt="伝承帖の本文の一頁。古い手紙の内容と、その場面を描いた絵"></div>
+      <div>
+        <p class="for">見立帖で分かったことを年代順に並べた、一冊の読み物です</p>
+        <ul>
+          <li><b class="ko">古い記録で確かめられたこと</b>原文と現代語訳を並べて読めます</li>
+          <li><b class="ko">土地に語られてきた話</b>軍記や地誌、言い伝えを、どの本にあるかとともに読めます</li>
+          <li><b>場面の絵</b>と、<b>名前のつながりを示す図</b>が入ります</li>
+          <li><b>ご家族からの聞き書き</b>も、一つの章にできます</li>
+        </ul>
+        <p style="margin:0"><b>どこまでが古い記録で、どこからが言い伝えなのかが、</b>読んでいて自然に分かります。</p>
+      </div>
+    </div>
+    <p class="fee"><b class="num">98,000円</b><span>（税込）。綴・見立帖をご依頼いただいた方が対象です。厚さは、見つかった記録の量によって変わります。印刷製本版（箱付き）は＋8,000円、上製本は＋30,000円です。納期の目安は2か月です。</span></p>
+  </div>
+
+  <h3 class="chu">冊子に収録されているもの（見本のうち4枚）</h3>
+  <div class="zu yon">
+    <figure tabindex="0"><img src="img/e-kawa.jpg" alt="場面の絵。馬で川を渡り、対岸に立つ人々へ向かう（生成画像）"><figcaption><b>場面の絵</b><span class="setsu">記録にある場面を描いた、本文に掲載する絵です（生成画像）。</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/densho_shojo.png" alt="伝承帖の第三章。章の初めに「この章で分かること」、本文、原文、載っている本"><figcaption><b>古い手紙を読み解く章</b><span class="setsu">章の初めに「この章で分かること」を示します。本文のあとには、原文と、内容の根拠となる本の名前を掲載します。</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/densho_keito.png" alt="伝承帖の初めにある系統図。記録に出た名前を線で結び、線の種類で記録の裏づけを示す"><figcaption><b>名前のつながりの図</b><span class="setsu">記録に出てくる名前を線で結んだ図です。実線は、その時代の記録に明確に書かれた関係を、破線は言い伝えによる関係を表します。</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/densho_atama.png" alt="伝承帖の一頁目。題と、書き方の断り、目次"><figcaption><b>表紙をめくった最初のページ</b><span class="setsu">記録の確かさをどのように書き分けているかの説明と、目次があります。</span></figcaption></figure>
+  </div>
+  <p class="note">図を押すと拡大表示され、説明をお読みいただけます。ここに掲載しているのは、架空の家（安東家）の見本です。絵には生成画像を使用しています。</p>
+</section>
+</div>
+
+<!-- ── お約束 ── -->
+<section class="wrap wide" id="hoshin">
+  <h2><span class="kicker">制作の方針</span>3つのお約束</h2>
+  <div class="cols three">
+    <div><b>先に見立帖をご覧いただけます</b>記録が残っている時代は、家によって異なります。見立帖で、家系の記録がどの時代まで残っているかをご覧になってから、先へ進むかをお決めいただけます。</div>
+    <div><b>調べた記録は、すべてお手元に残ります</b>名字が出たかどうかにかかわらず、調べたすべての記録を、本の名前と所蔵先とともに一覧にします。ご家族が、その一覧をもとに、さらに調査を続けられます。</div>
+    <div><b>どの記録にある話かが、いつでも分かります</b>その時代の記録に書かれていることと、後世に語られてきたことは、表現を分けて示します。判読が難しい文字は、文字の形のまま載せ、考えられる読みを添えます。</div>
+  </div>
+</section>
+
+<!-- ── 始め方と申し込み ── -->
+<section class="wrap" id="mousikomi">
+  <h2><span class="kicker">お申し込み</span>始め方</h2>
+  <ol class="nagare">
+    <li><b>名字と、明治ごろ（1868〜1912年）の本籍地の村をお知らせください</b>大字まで分かれば、それで十分です。</li>
+    <li><b>綴・一葉が、お手元に届きます</b>名字がどの土地に多いかと、本籍地がどのような村かが、A4用紙の両面で分かります。</li>
+    <li><b>一枚をご覧になってから、先へ進むかをお考えいただけます</b>お進みになるなら、次は綴・見立帖です。</li>
+    <li><b>綴・見立帖の結果に応じて、次のサービスをご案内します</b>見立帖で、本籍地の近くにある、名字が記された江戸時代以前の記録や言い伝えが見つかった場合は、綴・伝承帖をご案内いたします。</li>
+  </ol>
+
+  <div class="mousikomi">
+    <h3>お申し込み</h3>
+    <p class="note" style="margin-bottom:.4rem">名字と、明治ごろ（1868〜1912年）の本籍地の村（大字まで）をご記入ください。この2つから始められます。</p>
+    <p class="hajime">開業にあたり、<b>最初の5件に限り、綴・見立帖を25,000円（税込）</b>でお受けします。お読みになった感想の、この頁への掲載に同意いただける方が対象です。掲載するのは感想と都道府県名だけで、調べた内容は載せません。</p>
+    <a class="btn" href="〔Stripe の支払リンク〕">綴・見立帖を申し込む（30,000円）</a>
+    <a class="btn sub" href="〔Stripe の支払リンク〕">綴・一葉を申し込む（500円）</a>
+    <p class="note">お支払い方法は、クレジットカード（Stripe）または銀行振込です。作業に着手する前に、全額をお支払いいただきます。取消しの扱いは、<a href="kiyaku.html#dai4">ご利用規約の第4条</a>「お支払いとお取消し」のとおりです。</p>
+    <p class="renraku">お電話・メールでも承ります。<br>
+      電話　<a class="num" href="tel:047-384-8828">047-384-8828</a>（平日 9:00〜17:00）<br>
+      メール　<a href="mailto:tsuzuri.kakei@gmail.com">tsuzuri.kakei@gmail.com</a></p>
+  </div>
+</section>
+
+<!-- ── お選びいただけるもの ── -->
+<section class="wrap" id="option">
+  <h2>追加でお選びいただけるサービス</h2>
+
+  <div class="opt">
+    <b class="name">戸籍で家系図をつくる（オプション）</b>
+    <p>相続などで集めた除籍謄本がお手元にある方に向けたサービスです。除籍謄本を1枚ずつ確認し、A3判の厚紙にまとめた系図、人物台帳、家のあゆみ、生没の記録（誰がいつ生まれ、いつ亡くなったかの一覧）を作成します。原本は順にとじて、箱に入れてお返しします。</p>
+    <p class="fee"><b class="num">100,000円</b><span>（税込）。除籍謄本6綴りまで。7綴り目以降は、1綴りにつき5,000円を加算します。<b>原本は到着から2週間でお返しし</b>、できあがりまでは2か月が目安です。</span></p>
+  </div>
+</section>
+
+<!-- ── お尋ね ── -->
+<section class="wrap" id="qa">
+  <h2><span class="kicker">ご参考</span>よくあるお尋ね</h2>
+  <details>
+    <summary>戸籍を集めていなくても頼めますか</summary>
+    <p>はい。綴・一葉と綴・見立帖は、名字と、明治ごろ（1868〜1912年）の本籍地の村だけで始められます。この2つがあれば、それで十分です。</p>
+  </details>
+  <details>
+    <summary>どこまでさかのぼれますか</summary>
+    <p>家によって、たどれる時代は変わります。同じ村でも、戦国時代の書状まで残っている家もあれば、江戸時代の検地帳から分かる家もあります。綴・見立帖で、家系の記録がどの時代まで残っているかをご覧になってから、先へ進むかをお決めいただけます。調べた記録は、名字が出たかどうかにかかわらず、すべて本の名前と所蔵先とともにお手元に残ります。</p>
+  </details>
+  <details>
+    <summary>戸籍の請求を代わりにしてもらえますか</summary>
+    <p>戸籍（除籍謄本など）の請求手続きと、請求書への署名は、ご本人にお願いしています。戸籍を請求できる方が、ご本人、配偶者、直系尊属、直系卑属に限られているためです。どの役場へ、誰の、どの範囲を請求するかの案内と、書き方の見本をお渡しします。欄はご本人がお書きください。</p>
+  </details>
+  <details>
+    <summary>ほかで作成した家系図がある場合も依頼できますか</summary>
+    <p>はい。お手元の家系図や戸籍があれば、綴・見立帖に活かします。戸籍でたどれるのは、江戸時代の終わりごろまでです。綴・見立帖では、名字と本籍地の村を手がかりに、江戸時代以前の記録を調べます。</p>
+  </details>
+  <details>
+    <summary>できあがったものは、どのような形で届きますか</summary>
+    <p>PDFでお送りします。綴・見立帖は、まとめの頁をA4用紙に印刷して郵送でもお届けします。メールを受け取れる環境と、PDFを開ける機器（パソコン・スマートフォン・タブレット）をご用意ください。印刷製本版をご希望のときは、郵送でお届けします。</p>
+  </details>
+  <details>
+    <summary>お預かりした原本は、どうなりますか</summary>
+    <p>撮影が済み次第、書留でお返しします。お預かりした日に「預かり証」をお渡しします。撮影した画像は、お渡しから1年後に削除します。</p>
+  </details>
+</section>
+
+<!-- ── ご利用規約・特商法・個人情報の取り扱いは別の頁〈依頼者 2026-09-24〉 ── -->
+<section class="wrap">
+  <p class="kitei-links"><a href="kiyaku.html">ご利用規約</a>　｜　<a href="tokusho.html">特定商取引法に基づく表示</a>　｜　<a href="privacy.html">個人情報の取り扱い（プライバシーポリシー）</a>　｜　<a href="menseki.html">免責事項</a></p>
+</section>
+
+</main>
+</div>
+
+
+<dialog class="oki" id="oki"><button type="button" onclick="this.closest('dialog').close()">閉じる</button><figure></figure></dialog>
+<script>
+(function(){
+  var d=document.getElementById('oki'); if(!d||!d.showModal) return;
+  function open(f){ d.querySelector('figure').innerHTML=f.innerHTML; d.showModal(); }
+  document.querySelectorAll('.zu.roku figure,.zu.yon figure').forEach(function(f){
+    f.addEventListener('click',function(){open(f)});
+    f.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault(); open(f);} });
+  });
+  d.addEventListener('click',function(e){ if(e.target===d) d.close(); });
+})();
+</script>
+</body>
+</html>
