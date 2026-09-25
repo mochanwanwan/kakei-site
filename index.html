@@ -306,6 +306,7 @@ aside.side::-webkit-scrollbar{display:none}
 .btn-mihon{display:inline-block; background:var(--accent); color:var(--on-accent); text-decoration:none; border-radius:4px; padding:.5rem 1.1rem; font-weight:500}
 .zu.roku{grid-template-columns:repeat(3,1fr); gap:1rem}
 .zu.yon{grid-template-columns:repeat(4,1fr); gap:1rem}
+.zu.yon.go{grid-template-columns:repeat(5,1fr)}
 .zu.roku figure,.zu.yon figure{padding:.5rem .5rem .6rem; cursor:zoom-in}
 .zu.roku img{aspect-ratio:4/3; object-fit:contain; object-position:center}
 .zu.yon img{aspect-ratio:3/4; object-fit:contain; object-position:top center}
@@ -322,7 +323,7 @@ dialog.oki figcaption b span{font-weight:500; color:var(--red); font-size:.85rem
 dialog.oki .setsu{display:block}
 dialog.oki button{float:right; border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:4px; padding:.2rem .7rem; font:inherit; cursor:pointer; margin-bottom:.4rem}
 @media (max-width:900px){
-  .zu.roku,.zu.yon{grid-template-columns:1fr 1fr}
+  .zu.roku,.zu.yon,.zu.yon.go{grid-template-columns:1fr 1fr}
   .mihon-top{grid-template-columns:7rem 1fr; gap:.9rem}
 }
 </style>
@@ -496,7 +497,7 @@ dialog.oki button{float:right; border:1px solid var(--line); background:var(--ca
     <li><b>中世・戦国時代の記録と家の起こり</b>名字の起こりと伝えられる土地や、その時代の記録に見える同じ名字の家を、本籍地からの距離とともに掲載します</li>
     <li><b>まとめ</b>ここまでの章をもとに、村でどのような家だったのかが分かります</li>
     <li><b>調べた記録の一覧</b>名字が出たかどうかにかかわらず、調べたすべての記録を、本の名前と所蔵先とともに一覧にします</li>
-    <li><b>別紙「今後のご案内」</b>戸籍で分かること、この先のサービスと費用、さらに掘り下げるときの手がかりを、見立帖とは別にお渡しします</li>
+    <li><b>別紙「今後のご案内」</b>戸籍で分かること、今後のサービスと費用、さらに掘り下げるときの手がかりを、見立帖とは別にお渡しします</li>
   </ol>
   <p class="note">章の厚さは、その土地に残っている記録の量で変わります。江戸時代と明治以降の章が厚くなる家が多く、中世の記録が見つかった家では、中世の章も厚くなります。</p>
   </details>
@@ -530,7 +531,7 @@ dialog.oki button{float:right; border:1px solid var(--line); background:var(--ca
   <div class="mihon-top">
     <a href="mihon/mihon_ando_densho.pdf" class="hyo"><img src="img/densho_p1.png" alt="綴・伝承帖の見本の表紙"></a>
     <div>
-      <b>綴・伝承帖の見本（29ページ）</b>
+      <b>綴・伝承帖の見本（30ページ）</b>
       <p>架空の家（安東家）の伝承帖を、表紙から終章までPDFでお読みいただけます。A4判の冊子です。</p>
       <a class="btn-mihon" href="mihon/mihon_ando_densho.pdf">PDFで全編を読む</a>
     </div>
@@ -553,14 +554,15 @@ dialog.oki button{float:right; border:1px solid var(--line); background:var(--ca
     <p class="fee"><b class="num">98,000円</b><span>（税込）。綴・見立帖をご依頼いただいた方が対象です。厚さは、見つかった記録の量によって変わります。印刷製本版（箱付き）は＋8,000円、上製本は＋30,000円です。納期の目安は2か月です。</span></p>
   </div>
 
-  <h3 class="chu">冊子に収録されているもの（見本のうち4枚）</h3>
-  <div class="zu yon">
+  <h3 class="chu">冊子に収録されているもの（見本のうち5枚）</h3>
+  <div class="zu yon go">
     <figure tabindex="0"><img src="img/e-kawa.jpg" alt="場面の絵。馬で川を渡り、対岸に立つ人々へ向かう（生成画像）"><figcaption><b>場面の絵</b><span class="setsu">記録にある場面を描いた、本文に掲載する絵です（生成画像）。</span></figcaption></figure>
     <figure tabindex="0"><img src="img/densho_shojo.png" alt="伝承帖の第三章。章の初めに「この章で分かること」、本文、原文、載っている本"><figcaption><b>古い手紙を読み解く章</b><span class="setsu">章の初めに「この章で分かること」を示します。本文のあとには、原文と、内容の根拠となる本の名前を掲載します。</span></figcaption></figure>
     <figure tabindex="0"><img src="img/densho_keito.png" alt="伝承帖の初めにある系統図。記録に出た名前を線で結び、線の種類で記録の裏づけを示す"><figcaption><b>名前のつながりの図</b><span class="setsu">記録に出てくる名前を線で結んだ図です。実線は、その時代の記録に明確に書かれた関係を、破線は言い伝えによる関係を表します。</span></figcaption></figure>
     <figure tabindex="0"><img src="img/densho_atama.png" alt="伝承帖の一頁目。題と、書き方の断り、目次"><figcaption><b>表紙をめくった最初のページ</b><span class="setsu">記録の確かさをどのように書き分けているかの説明と、目次があります。</span></figcaption></figure>
+    <figure tabindex="0"><img src="img/densho_shiryo.png" alt="伝承帖の第五章に載せた古文書の写し。大友義統の一字状の本文、日付、宛名と花押"><figcaption><b>古文書の写し</b><span class="setsu">原文が掲載された本のページの画像を添えます。章の終わりに載せた原文とあわせて、元の文書の状態を確認できます。</span></figcaption></figure>
   </div>
-  <p class="note">図を押すと拡大表示され、説明をお読みいただけます。ここに掲載しているのは、架空の家（安東家）の見本です。絵には生成画像を使用しています。</p>
+  <p class="note">図を押すと拡大表示され、説明をお読みいただけます。ここに掲載しているのは、架空の家（安東家）の見本です。絵には生成画像を使用しています。古文書の写しは、国立国会図書館デジタルコレクションで公開されているパブリックドメインの画像です。</p>
 </section>
 </div>
 
